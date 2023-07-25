@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1 (Python 3.11.4 on darwin)" generated="20230725 08:54:51.879" rpa="false" schemaversion="4">
+<suite id="s1" name="Weronika Robotframework" source="/Users/weronika/PycharmProjects/weronika_robotframework">
+<suite id="s1-s1" name="Test Login Rf" source="/Users/weronika/PycharmProjects/weronika_robotframework/test_login_rf.robot">
+<test id="s1-s1-t1" name="Login to the system" line="13">
+<kw name="Open login page">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${LOGIN URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230725 08:54:52.035" level="INFO">Opening browser 'Chrome' to base url 'https://scouts-test.futbolkolektyw.pl/en'.</msg>
+<msg timestamp="20230725 08:54:52.036" level="INFO">Executing: /Users/weronika/PycharmProjects/weronika_robotframework/venv/lib/python3.11/site-packages/selenium/webdriver/common/macos/selenium-manager --browser chrome --output json</msg>
+<status status="PASS" starttime="20230725 08:54:52.035" endtime="20230725 08:55:06.497"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>Scouts panel - sign in</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20230725 08:55:06.545" level="INFO">Page title is 'Scouts panel - sign in'.</msg>
+<status status="PASS" starttime="20230725 08:55:06.498" endtime="20230725 08:55:06.545"/>
+</kw>
+<status status="PASS" starttime="20230725 08:54:52.035" endtime="20230725 08:55:06.545"/>
+</kw>
+<kw name="Type in email">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EMAIL}</arg>
+<arg>user05@getnada.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230725 08:55:06.548" level="INFO">Typing text 'user05@getnada.com' into text field 'xpath=//*[@id='login']'.</msg>
+<status status="PASS" starttime="20230725 08:55:06.547" endtime="20230725 08:55:09.636"/>
+</kw>
+<status status="PASS" starttime="20230725 08:55:06.546" endtime="20230725 08:55:09.636"/>
+</kw>
+<kw name="Type in password">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${PASSWORD}</arg>
+<arg>Test-1234</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230725 08:55:09.637" level="INFO">Typing text 'Test-1234' into text field 'xpath=//*[@id='password']'.</msg>
+<status status="PASS" starttime="20230725 08:55:09.637" endtime="20230725 08:55:14.055"/>
+</kw>
+<status status="PASS" starttime="20230725 08:55:09.637" endtime="20230725 08:55:14.056"/>
+</kw>
+<kw name="Click on the sign button">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//span[1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230725 08:55:14.058" level="INFO">Clicking element 'xpath=//span[1]'.</msg>
+<status status="PASS" starttime="20230725 08:55:14.057" endtime="20230725 08:55:15.083"/>
+</kw>
+<status status="PASS" starttime="20230725 08:55:14.057" endtime="20230725 08:55:15.083"/>
+</kw>
+<kw name="Assert dashboard">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${PAGELOGO}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230725 08:55:15.084" endtime="20230725 08:55:15.224"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>Scouts panel - sign in</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20230725 08:55:15.227" level="INFO">Page title is 'Scouts panel - sign in'.</msg>
+<status status="PASS" starttime="20230725 08:55:15.224" endtime="20230725 08:55:15.227"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>alert.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230725 08:55:15.659" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="alert.png"&gt;&lt;img src="alert.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230725 08:55:15.227" endtime="20230725 08:55:15.659"/>
+</kw>
+<status status="PASS" starttime="20230725 08:55:15.084" endtime="20230725 08:55:15.659"/>
+</kw>
+<status status="PASS" starttime="20230725 08:54:52.034" endtime="20230725 08:55:15.659"/>
+</test>
+<doc>Suite description #automated tests for scout website</doc>
+<status status="PASS" starttime="20230725 08:54:51.897" endtime="20230725 08:55:15.660"/>
+</suite>
+<status status="PASS" starttime="20230725 08:54:51.880" endtime="20230725 08:55:15.661"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Weronika Robotframework">Weronika Robotframework</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Test Login Rf">Weronika Robotframework.Test Login Rf</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
