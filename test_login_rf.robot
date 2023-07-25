@@ -12,6 +12,18 @@ ${LANGUAGE}     xpath=//*[@class='MuiListItemText-root']/span
 ${DASHBOARD}    https://scouts-test.futbolkolektyw.pl/en
 ${PAGELOGO_D}   xpath=//*[@id="__next"]/div[1]/header/div/h6
 ${PLAYERS}      xpath=//*/ul[1]/div[2]/div[2]/span
+${ADD PLAYER}  xpath=//*[text()='Add player']
+${ADD PLAYER URL}   https://scouts-test.futbolkolektyw.pl/en/players/add
+${ADD PLAYER LOGO}  xpath=//*[@id="__next"]/div[1]/main/div[2]/form/div[1]/div/span
+${EMAIL_P}      xpath=//*[@name='email']
+${NAME}     xpath=//*[@name='name']
+${SURNAME}      xpath=//*[@name='surname']
+${PHONE}        xpath=//*[@name='phone']
+${WEIGHT}       xpath=//*[@name='weight']
+${HEIGHT}       xpath=//*[@name='height']
+${AGE}      xpath=//*[@name='age']
+${LEG}      xpath=//*[@id='mui-component-select-leg']
+
 
 *** Test Cases ***
 Login to the system
@@ -48,39 +60,70 @@ Login To The System With Invalid Data
     Show info
     [Teardown]    Close Browser
 
+Add Player
+    Open Login Page
+    Type In Email
+    Type In Password
+    Click On The Sign Button
+    Open Dashboard
+    Click on the Add Player Button
+    Open Add Player Page
+    Type In Player's Email
+    Type in Name
+    Type in Surname
+    Type in Phone
+    Type in Weight
+    Type in Height
+    Type in Age
+    Type in leg
+
+
+
 
 *** Keywords ***
 Open login page
     Open Browser        ${LOGIN URL}         ${BROWSER}
     Title Should Be     Scouts panel - sign in
-
 Type in email
     Input Text      ${EMAIL}        user05@getnada.com
-
 Type in invalid email
     Input Text      ${EMAIL}        user05@getnada.comm
-
 Type in password
     Input Text      ${PASSWORD}     Test-1234
-
 Click on the sign button
     Click Element       xpath=//span[1]
-
 Open dashboard
     Wait Until Element Is Visible       ${PAGELOGO_D}
     #Open Browser    ${DASHBOARD}        ${BROWSER}
     Title Should Be    Scouts panel
-
 Assert dashboard
     Wait Until Element Is Visible       ${PAGELOGO}
     Title Should Be     Scouts panel - sign in
     Capture Page Screenshot     alert.png
-
 Click on the language button
     Click Element        xpath=//*[@class='MuiListItemText-root']/span
-
 Click on the players button
     Click Element       xpath=//*/ul[1]/div[2]/div[2]/span
-
 Show info
     Wait Until Page Contains        Identifier or password invalid.
+Click on the add player button
+    Click Element       xpath=//*[text()='Add player']
+Open add player page
+    Wait Until Element Is Visible    ${ADD PLAYER LOGO}
+    Title Should Be     Add player
+Type in player's email
+    Input Text      ${EMAIL_P}      karol.lis@gmail.com
+Type in name
+    Input Text      ${NAME}     Karol
+Type in surname
+    Input Text      ${SURNAME}      Lis
+Type in phone
+    Input Text      ${PHONE}        +48 243 908 111
+Type in weight
+    Input Text      ${WEIGHT}       95
+Type in height
+    Input Text      ${HEIGHT}       192
+Type in age
+    Input Text      ${AGE}          17.05.1999
+Type in leg
+    Page Should Contain List     ${LEG}      xpath=//*[@id='mui-component-select-leg']
