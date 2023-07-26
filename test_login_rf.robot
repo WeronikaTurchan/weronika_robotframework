@@ -23,7 +23,15 @@ ${WEIGHT}       xpath=//*[@name='weight']
 ${HEIGHT}       xpath=//*[@name='height']
 ${AGE}      xpath=//*[@name='age']
 ${LEG}      xpath=//*[@id='mui-component-select-leg']
-
+${LEFT_LEG}     xpath=//*[@id='menu-leg']/div[3]/ul/li[2]
+${CLUB}     xpath=//*[@name='club']
+${POSITION}     xpath=//*[@name='mainPosition']
+${DISTRICT}     xpath=//*[@id='mui-component-select-district']
+${CHOSEN_DISTRICT}      xpath=//*[@id='menu-district']/div[3]/ul/li[8]
+${ACHIEVEMENTS}     xpath=//*[@name='achievements']
+${ADD_LANGUAGE}     xpath=//*[text()='Add language']
+${ENTER_LANGUAGE}       xpath=//*/div[15]/div/div/div/input
+${SUBMIT}       xpath=//*/div[3]/button[1]/span[1]
 
 *** Test Cases ***
 Login to the system
@@ -75,10 +83,16 @@ Add Player
     Type in Weight
     Type in Height
     Type in Age
-    Type in leg
-
-
-
+    Type in Leg
+    Select Leg
+    Type in Club
+    Type in position
+    Type in District
+    Select District
+    Type in achievements
+    Type in language
+    Click Submit Button
+    [Teardown]    Close Browser
 
 *** Keywords ***
 Open login page
@@ -94,7 +108,6 @@ Click on the sign button
     Click Element       xpath=//span[1]
 Open dashboard
     Wait Until Element Is Visible       ${PAGELOGO_D}
-    #Open Browser    ${DASHBOARD}        ${BROWSER}
     Title Should Be    Scouts panel
 Assert dashboard
     Wait Until Element Is Visible       ${PAGELOGO}
@@ -108,6 +121,7 @@ Show info
     Wait Until Page Contains        Identifier or password invalid.
 Click on the add player button
     Click Element       xpath=//*[text()='Add player']
+    Sleep    3s
 Open add player page
     Wait Until Element Is Visible    ${ADD PLAYER LOGO}
     Title Should Be     Add player
@@ -126,4 +140,21 @@ Type in height
 Type in age
     Input Text      ${AGE}          17.05.1999
 Type in leg
-    Page Should Contain List     ${LEG}      xpath=//*[@id='mui-component-select-leg']
+    Click Element     ${LEG}
+Select leg
+    Click Element    ${LEFT_LEG}
+Type in club
+    Input Text    ${CLUB}       Manchester
+Type in position
+    Input Text    ${POSITION}   Goalkeeper
+Type in district
+    Click Element    ${DISTRICT}
+Select district
+    Click Element    ${CHOSEN_DISTRICT}
+Type in achievements
+    Input Text    ${ACHIEVEMENTS}   None
+Type in language
+    Click Element    ${ADD_LANGUAGE}
+    Input Text      ${ENTER_LANGUAGE}       Polish
+Click Submit Button
+    Click Element    ${SUBMIT}
